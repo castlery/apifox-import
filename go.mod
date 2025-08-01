@@ -1,4 +1,4 @@
-module apifox-import
+module github.com/castlery/apifox-import
 
 go 1.24.4
 
