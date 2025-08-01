@@ -14,6 +14,7 @@ import (
 
 type Flag struct {
 	version bool
+	verbose bool
 
 	projectID  string
 	apiVersion string
@@ -32,7 +33,8 @@ func main() {
 	log.SetFlags(log.Ldate | log.Ltime | log.Lmicroseconds)
 
 	var f Flag
-	flag.BoolVar(&f.version, "v", false, "show version.")
+	flag.BoolVar(&f.version, "v", false, "show version")
+	flag.BoolVar(&f.verbose, "verbose", false, "more output")
 
 	flag.StringVar(&f.projectID, "projectID", "", "apifox project id")
 	flag.StringVar(&f.apiVersion, "apiver", "2024-03-28", "the value of http header X-Apifox-Api-Version")
@@ -64,7 +66,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	fmt.Println("Import completed.")
+	fmt.Println("apifox import completed.")
 }
 
 // https://apifox-openapi.apifox.cn/api-173409873
@@ -136,7 +138,9 @@ func request(input string, f *Flag) error {
 	if err != nil {
 		return fmt.Errorf("read response: %w", err)
 	}
-	fmt.Printf("Result: %s\n", b)
+	if f.verbose {
+		fmt.Printf("Result: %s\n", b)
+	}
 
 	return nil
 }
