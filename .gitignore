@@ -1,0 +1,41 @@
+# os
+._*
+.DS_Store
+.DS_Store?
+.Spotlight-V100
+.Trashes
+desktop.init
+ehthumbs.db
+Thumbs.db
+
+# vim
+*~
+*.swp
+
+# direnv
+.direnv
+.envrc
+
+# temporary
+build/
+dist/
+
+# misc
+*.log
+.private
+
+# python
+*.egg-info
+*.py[oc]
+.*.cache
+.venv
+__pycache__/
+wheels/
+~\$*
+
+# custom
+/bin
+/dist
+*.dev.json
+*.dev.yaml
+*.lock
